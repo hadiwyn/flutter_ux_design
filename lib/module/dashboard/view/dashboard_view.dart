@@ -21,7 +21,6 @@ class DashboardView extends StatefulWidget {
   Widget build(context, DashboardController controller) {
     controller.view = this;
 
-    
     Future<FirebaseApp> _initializeFirebase() async {
       FirebaseApp firebaseApp = await Firebase.initializeApp();
       return firebaseApp;
@@ -32,17 +31,6 @@ class DashboardView extends StatefulWidget {
     final _pageController = PageController();
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        elevation: 0,
-        title: Align(
-          alignment: Alignment.centerRight,
-          child: IconTheme(
-            data: IconThemeData(color: Colors.blueGrey),
-            child: Icon(Icons.search),
-          ),
-        ),
-      ),
       body: FutureBuilder(
         future: _initializeFirebase(),
         builder: (context, snapshot) {
