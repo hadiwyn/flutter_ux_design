@@ -127,7 +127,6 @@ class AddDataView extends StatefulWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  ElevatedButton(onPressed: () {}, child: Text('Cancel')),
                   ElevatedButton(
                       onPressed: () {
                         final user = <String, dynamic>{
