@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "657699133158",
+    "project_id": "flutter-ux-design-c357c",
+    "storage_bucket": "flutter-ux-design-c357c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:657699133158:android:067710edfeda9128688d27",
+        "android_client_info": {
+          "package_name": "com.example.flutter_ux_design"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "657699133158-2bih1agakp2lvtartt4u51n9m2cp159h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKN4L_cwI2HVkgAhJnAwcHIu_jlFq5NfA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "657699133158-2bih1agakp2lvtartt4u51n9m2cp159h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
