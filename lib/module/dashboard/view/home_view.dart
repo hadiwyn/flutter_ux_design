@@ -1,78 +1,98 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ux_design/core.dart';
-import '../controller/dashboard_controller.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+import '../widget/list_horizontal.dart';
+import '../widget/list_vertical.dart';
+
+class Home extends StatefulWidget {
+  const Home({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<Home> createState() => _HomeState();
 }
 
-class _HomeViewState extends State<HomeView> {
-  var db = FirebaseFirestore.instance;
-
-  Future<FirebaseApp> _initializeFirebase() async {
-    FirebaseApp firebaseApp = await Firebase.initializeApp();
-    return firebaseApp;
-  }
-
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _initializeFirebase(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return SingleChildScrollView(
-            child: Container(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                children: [
-                  ElevatedButton.icon(
-                    icon: const Icon(Icons.add),
-                    label: const Text("Add Data"),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blueGrey,
-                    ),
-                    onPressed: () {
-                      final user = <String, dynamic>{
-                        "first": "Alan",
-                        "middle": "Mathison",
-                        "last": "Turing",
-                        "born": 1912
-                      };
-
-// Add a new document with a generated ID
-                      db.collection("users").add(user).then((DocumentReference
-                              doc) =>
-                          print('DocumentSnapshot added with ID: ${doc.id}'));
-                    },
-                  ),
-                  ElevatedButton.icon(
-                    icon: const Icon(Icons.add),
-                    label: const Text("Read Data"),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blueGrey,
-                    ),
-                    onPressed: () async {
-                      await db.collection("users").get().then((event) {
-                        for (var doc in event.docs) {
-                          print("${doc.id} => ${doc.data()}");
-                        }
-                      });
-                    },
-                  ),
-                ],
-              ),
+    return Container(
+      child: SingleChildScrollView(
+        child: Column(children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Selamat Datang Di",
+                  style: GoogleFonts.glory(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Color(0xFF315F43)),
+                )
+              ],
             ),
-          );
-        }
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      },
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Find My Stuff",
+                  style: GoogleFonts.glory(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Color(0xFF315F43)),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Terbaru",
+                  style: GoogleFonts.inter(
+                      fontSize: 14,
+                      color: Color(0xFF4C874F),
+                      fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 5),
+            child: SizedBox(height: 330, child: ListHorizontal()),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Kategori  >  Barang Hilang",
+                  style: GoogleFonts.inter(
+                      fontSize: 14,
+                      color: Color(0xFF4C874F),
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          ListVertical()
+        ]),
+      ),
     );
   }
 }
